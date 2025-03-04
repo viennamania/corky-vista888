@@ -28,7 +28,7 @@ const setup = async () => {
     console.log('Connected to database');
 
     const hasData = await client
-      .db('gobyte')
+      .db('vista')
       .collection('orders')
       .countDocuments();
 
@@ -142,7 +142,7 @@ const setup = async () => {
 
 
     const insert = await client
-      .db('gobyte')
+      .db('vista')
       .collection('orders')
       .insertMany(records);
 

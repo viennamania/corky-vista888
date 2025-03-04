@@ -54,7 +54,7 @@ export async function insertOne(
 ): Promise<string> {
   
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('banners');
+  const collection = client.db('vista').collection('banners');
 
   // random id
   banner.id = Math.floor(100000 + Math.random() * 900000).toString();
@@ -76,7 +76,7 @@ export async function getAll(
 ): Promise<BannerProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('banners');
+  const collection = client.db('vista').collection('banners');
 
   
 
@@ -178,7 +178,7 @@ export async function getAllForUser(
 ): Promise<BannerProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('banners');
+  const collection = client.db('vista').collection('banners');
 
   
 
@@ -290,7 +290,7 @@ export async function getAllByUserId(
 ): Promise<BannerProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('orders');
+  const collection = client.db('vista').collection('orders');
 
   return await collection
     .aggregate<BannerProps>(
@@ -331,7 +331,7 @@ export async function getAllByUserId(
 
 export async function getCount(): Promise<number> {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('orders');
+  const collection = client.db('vista').collection('orders');
   return await collection.countDocuments();
 }
 
@@ -339,6 +339,6 @@ export async function getCount(): Promise<number> {
 
 export async function update(username: string, bio: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('products');
+  const collection = client.db('vista').collection('products');
   return await collection.updateOne({ username }, { $set: { bio } });
 }

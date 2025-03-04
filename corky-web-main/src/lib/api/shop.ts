@@ -110,7 +110,7 @@ Et vivamus lorem pulvinar nascetur non. Pulvinar a sed platea rhoncus ac mauris 
 export async function registerOne(data: ShopProps): Promise<ShopProps> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
   const result = await collection.insertOne(data);
 
 
@@ -134,7 +134,7 @@ export async function getAll(
 ): Promise<ShopProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
 
   
 
@@ -244,7 +244,7 @@ export async function getAllWaiting(
 ): Promise<ShopProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
 
   
 
@@ -346,7 +346,7 @@ export async function getOne(id: string): Promise<ShopProps | null> {
   console.log('getUser id: ' + id);
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
   const results = await collection.findOne<ShopProps>(
     { id },
     { projection: { _id: 0, emailVerified: 0 } }
@@ -364,7 +364,7 @@ export async function getOne(id: string): Promise<ShopProps | null> {
 
 export async function getCount(): Promise<number> {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
   return await collection.countDocuments();
 }
 
@@ -372,7 +372,7 @@ export async function getCount(): Promise<number> {
 
 export async function update(username: string, bio: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
   return await collection.updateOne({ username }, { $set: { bio } });
 }
 
@@ -381,31 +381,31 @@ export async function update(username: string, bio: string) {
 
 export async function updateName(id: string, value: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
   return await collection.updateOne({ id }, { $set: { name: value } });
 }
 
 export async function updateContactName(id: string, value: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
   return await collection.updateOne({ id }, { $set: { contactName: value } });
 }
 
 export async function updateContactPhone(id: string, value: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
   return await collection.updateOne({ id }, { $set: { contactPhone: value } });
 }
 
 export async function updateContactEmail(id: string, value: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
   return await collection.updateOne({ id }, { $set: { contactEmail: value } });
 }
 
 export async function updateIntroduction(id: string, value: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
   return await collection.updateOne({ id }, { $set: { introduction: value } });
 }
 
@@ -414,7 +414,7 @@ export async function updateIntroduction(id: string, value: string) {
 
 export async function updateBasic(id: string, avatar: string, shopName: string, contactName: string, contactPhone: string, contactEmail: string, introduction: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
 
   return await collection.updateOne(
     {
@@ -458,7 +458,7 @@ export async function updateBusiness(
   //memo: string,
   ) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
 
   return await collection.updateOne(
     {
@@ -509,7 +509,7 @@ export async function updateDelivery(
   //memo: string,
   ) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('shops');
+  const collection = client.db('vista').collection('shops');
 
   return await collection.updateOne(
     {
@@ -557,7 +557,7 @@ export async function updateSettlement(
 
 
     const client = await clientPromise;
-    const collection = client.db('gobyte').collection('shops');
+    const collection = client.db('vista').collection('shops');
   
     return await collection.updateOne(
       {
@@ -582,7 +582,7 @@ export async function updateSettlement(
   export async function checkOne(id: string, password: string): Promise<ShopProps | null> {
 
     const client = await clientPromise;
-    const collection = client.db('gobyte').collection('shops');
+    const collection = client.db('vista').collection('shops');
     const results = await collection.findOne<ShopProps>(
       {
         loginid: id,

@@ -87,7 +87,7 @@ export async function insertOne(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
   // check same email, then return error
 
@@ -194,7 +194,7 @@ export async function getUserByEmail(
   console.log('getUser email: ' + email);
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
 
   return await collection.findOne<UserProps>(

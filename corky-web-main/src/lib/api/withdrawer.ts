@@ -88,7 +88,7 @@ export async function insertOne(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('withdrawers');
+  const collection = client.db('vista').collection('withdrawers');
 
   // check same email, then return error
 
@@ -147,7 +147,7 @@ export async function getUser(
   console.log('getUser id: ' + id);
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
 
   // id is number
@@ -169,7 +169,7 @@ export async function getUserWalletPrivateKeyByWalletAddress(
 ): Promise<string | null> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('withdrawers');
+  const collection = client.db('vista').collection('withdrawers');
 
   const results = await collection.findOne<UserProps>(
     { walletAddress },
@@ -194,7 +194,7 @@ export async function getWithdrawerByUserid(
   console.log('getWithdrawerByUserid userid: ' + userid);
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('withdrawers');
+  const collection = client.db('vista').collection('withdrawers');
 
   const results = await collection.findOne<UserProps>(
     { userid: userid },
@@ -217,7 +217,7 @@ export async function checkUserByEmail(
   console.log('getUser email: ' + email);
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
 
   const results = await collection.findOne<UserProps>(
@@ -250,7 +250,7 @@ export async function loginUserByEmail(
   console.log('getUser email: ' + email);
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
 
   const results = await collection.findOne<UserProps>(
@@ -264,7 +264,7 @@ export async function loginUserByEmail(
   if (results) {
     
     // user_login_sesson
-    const sessionCollection = client.db('gobyte').collection('user_login_sessions');
+    const sessionCollection = client.db('vista').collection('user_login_sessions');
     const sessionResults = await sessionCollection.insertOne({
       id: results.id,
       email: results.email,
@@ -290,7 +290,7 @@ export async function loginUserByEmail(
 
 export async function getFirstUser(): Promise<UserProps | null> {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
   const results = await collection.findOne<UserProps>(
     {},
     {
@@ -316,7 +316,7 @@ export async function getAllUsers(
 
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
 
   console.log('limit: ' + limit);
@@ -438,7 +438,7 @@ export async function getAllUsers(
 
 export async function searchUser(query: string): Promise<UserProps[]> {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
   
   return await collection
@@ -519,7 +519,7 @@ export async function searchUser(query: string): Promise<UserProps[]> {
 
 export async function getUserCount(): Promise<number> {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
   return await collection.countDocuments();
 }
 
@@ -527,7 +527,7 @@ export async function getUserCount(): Promise<number> {
 
 export async function updateUser(username: string, bio: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
   return await collection.updateOne({ username }, { $set: { bio } });
 }
 
@@ -538,7 +538,7 @@ export async function checkUser(id: string, password: string): Promise<UserProps
   
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
   const results = await collection.findOne<UserProps>(
     {
       id,
@@ -571,7 +571,7 @@ export async function getAllUsersForSettlementOfStore(
 
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
 
   console.log('limit: ' + limit);
@@ -631,7 +631,7 @@ export async function updateSettlementAmountOfFee(
   console.log('updateSettlementAmountOfFee walletAddress: ' + walletAddress + ' settlementAmountOfFee: ' + settlementAmountOfFee);
   
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
   return await collection.updateOne(
     { walletAddress },
@@ -653,7 +653,7 @@ export async function getAllUsersForSettlementOfFee(
 
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('users');
+  const collection = client.db('vista').collection('users');
 
 
   console.log('limit: ' + limit);

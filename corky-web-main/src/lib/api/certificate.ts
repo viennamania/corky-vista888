@@ -94,7 +94,7 @@ export async function insertOne(
 ): Promise<string> {
   
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('certificates');
+  const collection = client.db('vista').collection('certificates');
 
   // random id
   product.id = Math.floor(100000 + Math.random() * 900000).toString();
@@ -126,7 +126,7 @@ export async function getAll(
 ): Promise<ProductProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('certificates');
+  const collection = client.db('vista').collection('certificates');
 
   const query = q === null ? '' : q;
 
@@ -295,7 +295,7 @@ export async function getAllByEmail(
 ): Promise<ProductProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('certificates');
+  const collection = client.db('vista').collection('certificates');
 
   const query = q === null ? '' : q;
 
@@ -367,7 +367,7 @@ export async function getAllByWalletAddress(
 ): Promise<ProductProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('certificates');
+  const collection = client.db('vista').collection('certificates');
 
   const query = q === null ? '' : q;
 
@@ -435,7 +435,7 @@ export async function getAllByShopId(
 ): Promise<ProductProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('products');
+  const collection = client.db('vista').collection('products');
 
   const query = q === null ? '' : q;
 
@@ -497,7 +497,7 @@ export async function getAllByShopId(
 
 export async function getCount(): Promise<number> {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('products');
+  const collection = client.db('vista').collection('products');
   return await collection.countDocuments();
 }
 
@@ -505,7 +505,7 @@ export async function getCount(): Promise<number> {
 
 export async function update(username: string, bio: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('products');
+  const collection = client.db('vista').collection('products');
   return await collection.updateOne({ username }, { $set: { bio } });
 }
 
@@ -515,7 +515,7 @@ export async function getOne(id: string): Promise<ProductProps | null> {
   console.log('getUser id: ' + id);
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('products');
+  const collection = client.db('vista').collection('products');
   const results = await collection.findOne<ProductProps>(
     { id },
     { projection: { _id: 0, emailVerified: 0 } }
@@ -543,7 +543,7 @@ export async function updateBasic(
   avatar: string,
   ) {
     const client = await clientPromise;
-    const collection = client.db('gobyte').collection('products');
+    const collection = client.db('vista').collection('products');
   
     return await collection.updateOne(
       {
@@ -590,7 +590,7 @@ export async function updateOne (
   }: ProductProps,
   ) {
     const client = await clientPromise;
-    const collection = client.db('gobyte').collection('products');
+    const collection = client.db('vista').collection('products');
   
     return await collection.updateOne(
       {

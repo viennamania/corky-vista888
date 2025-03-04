@@ -88,7 +88,7 @@ export async function getOne(
   console.log('getOne id: ' + id);
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('orders');
+  const collection = client.db('vista').collection('orders');
 
   const results = await collection
     .aggregate<OrderProps>(
@@ -182,7 +182,7 @@ export async function getAll(
 
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('orders');
+  const collection = client.db('vista').collection('orders');
 
   console.log('getAll limit: ' + limit);
   console.log('getAll page: ' + page);
@@ -281,7 +281,7 @@ export async function getAllByUserId(
 ): Promise<OrderProps[]> {
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('orders');
+  const collection = client.db('vista').collection('orders');
 
   return await collection
     .aggregate<OrderProps>(
@@ -381,7 +381,7 @@ export async function getAllBySessionId(
   const client = await clientPromise;
 
 
-  const collection = client.db('gobyte').collection('user_login_sessions');
+  const collection = client.db('vista').collection('user_login_sessions');
 
   const results = await collection
     .find(
@@ -404,7 +404,7 @@ export async function getAllBySessionId(
 
 
   
-  const collectionOrders = client.db('gobyte').collection('orders');
+  const collectionOrders = client.db('vista').collection('orders');
 
   return await collectionOrders
     .aggregate<OrderProps>(
@@ -505,7 +505,7 @@ export async function getAllByShopId(
 
 
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('orders');
+  const collection = client.db('vista').collection('orders');
 
   return await collection
     .aggregate<OrderProps>(
@@ -595,7 +595,7 @@ export async function getAllByShopId(
 
 export async function getCount(): Promise<number> {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('orders');
+  const collection = client.db('vista').collection('orders');
   return await collection.countDocuments();
 }
 
@@ -603,6 +603,6 @@ export async function getCount(): Promise<number> {
 
 export async function update(username: string, bio: string) {
   const client = await clientPromise;
-  const collection = client.db('gobyte').collection('products');
+  const collection = client.db('vista').collection('products');
   return await collection.updateOne({ username }, { $set: { bio } });
 }
